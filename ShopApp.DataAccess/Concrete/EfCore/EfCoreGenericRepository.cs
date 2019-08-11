@@ -46,12 +46,20 @@ namespace ShopApp.DataAccess.Concrete.EfCore
 
         public T GetById(int id)
         {
-            throw new NotImplementedException();
+            using (var context = new TContext())
+            {
+                return context.Set<T>().Find(id);
+            }
+
+
         }
 
         public T GetOne(Expression<Func<T, bool>> filter)
         {
-            throw new NotImplementedException();
+            using (var context = new TContext())
+            {
+                return context.Set<T>().Where(filter).SingleOrDefault(); //Will send single or null value 
+            }
         }
 
         public void Update(T entity)
