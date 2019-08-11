@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using ShopApp.Business.Abstract;
+using ShopApp.Business.Concrete;
 using ShopApp.DataAccess.Abstract;
 using ShopApp.DataAccess.Concrete.Memory;
 
@@ -17,7 +19,9 @@ namespace ShopApp.WebUI
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IProductDal, MemoryProductDal>();
+            //If any method is chanhed in DataAccess
+            services.AddScoped<IProductDal, MemoryProductDal>(); //Brings MemoryProductDal if Iproduct is called
+            services.AddScoped<IProductService, ProductManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

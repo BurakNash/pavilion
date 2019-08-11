@@ -4439,6 +4439,20 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
+      "ShopApp.Business/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "ShopApp.DataAccess": "1.0.0",
+          "ShopApp.Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ShopApp.Business.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ShopApp.Business.dll": {}
+        }
+      },
       "ShopApp.DataAccess/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
@@ -12093,6 +12107,11 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
+    "ShopApp.Business/1.0.0": {
+      "type": "project",
+      "path": "../ShopApp.Business/ShopApp.Business.csproj",
+      "msbuildProject": "../ShopApp.Business/ShopApp.Business.csproj"
+    },
     "ShopApp.DataAccess/1.0.0": {
       "type": "project",
       "path": "../ShopApp.DataAccess/ShopApp.DataAccess.csproj",
@@ -12109,6 +12128,7 @@
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
+      "ShopApp.Business >= 1.0.0",
       "ShopApp.DataAccess >= 1.0.0"
     ]
   },
@@ -12142,6 +12162,9 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
+            "C:\\Users\\BURAK\\Desktop\\Capstone Backend\\ShopApp\\ShopApp.Business\\ShopApp.Business.csproj": {
+              "projectPath": "C:\\Users\\BURAK\\Desktop\\Capstone Backend\\ShopApp\\ShopApp.Business\\ShopApp.Business.csproj"
+            },
             "C:\\Users\\BURAK\\Desktop\\Capstone Backend\\ShopApp\\ShopApp.DataAccess\\ShopApp.DataAccess.csproj": {
               "projectPath": "C:\\Users\\BURAK\\Desktop\\Capstone Backend\\ShopApp\\ShopApp.DataAccess\\ShopApp.DataAccess.csproj"
             }
