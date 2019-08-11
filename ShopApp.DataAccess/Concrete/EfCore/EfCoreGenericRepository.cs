@@ -34,7 +34,14 @@ namespace ShopApp.DataAccess.Concrete.EfCore
 
         public IQueryable<T> GetAll(Expression<Func<T, bool>> filter=null)
         {
-            throw new NotImplementedException();
+            using (var context = new TContext())
+            {
+
+                return filter == null //Is the filter null?
+                    ? context.Set<T>() //If it is null
+                    : context.Set<T>().Where(filter); //If it is not null, send filter
+
+            }
         }
 
         public T GetById(int id)
