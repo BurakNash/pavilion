@@ -1,15 +1,19 @@
-﻿using ShopApp.DataAccess.Abstract;
+﻿using ShopApp.Business.Abstract;
+using ShopApp.DataAccess.Abstract;
 using ShopApp.Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 
-namespace ShopApp.DataAccess.Concrete.MySql
+namespace ShopApp.Business.Concrete
 {
-    public class MySqlProductDal : IProductDal
+    public class ProductManager : IProductService
     {
+        private IProductDal _productDal; //Accesssing ProductDal and gettting the functions
+        public ProductManager(IProductDal productDal)
+        {
+            _productDal = productDal; //connecting objects 
+        }
         public void Create(Product entity)
         {
             throw new NotImplementedException();
@@ -20,17 +24,12 @@ namespace ShopApp.DataAccess.Concrete.MySql
             throw new NotImplementedException();
         }
 
-        public IQueryable<Product> GetAll(Expression<Func<Product, bool>> filter)
+        public List<Product> GetAll()
         {
             throw new NotImplementedException();
         }
 
         public Product GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Product GetOne(Expression<Func<Product, bool>> filter)
         {
             throw new NotImplementedException();
         }
