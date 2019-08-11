@@ -64,7 +64,11 @@ namespace ShopApp.DataAccess.Concrete.EfCore
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            using (var context = new TContext())
+            {
+                context.Entry(entity).State = EntityState.Modified; //It will update the entity as it is changed
+                context.SaveChanges();
+            }
         }
     }
 }
