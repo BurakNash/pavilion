@@ -21,7 +21,13 @@ namespace ShopApp.DataAccess.Concrete.Memory
 
         public IEnumerable<Product> GetAll(Expression<Func<Product, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            var products = new List<Product>()
+            {
+                new Product() {Id=1,Name="Samsung S6", ImageUrl="1.jpg", Price=1000},
+                new Product() {Id=2,Name="Samsung S7", ImageUrl="1.jpg", Price=1000},
+                new Product() {Id=3,Name="Samsung S8", ImageUrl="1.jpg", Price=1000},
+            };
+            return products;
         }
 
         public Product GetById(int id)
