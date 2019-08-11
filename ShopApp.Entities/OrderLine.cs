@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ShopApp.Entities
 {
-    class OrderLine
+    public class OrderLine
     {
     }
 }
