@@ -34,6 +34,8 @@ namespace ShopApp.WebUI
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseMvcWithDefaultRoute();
+        }
 
     }
 }
