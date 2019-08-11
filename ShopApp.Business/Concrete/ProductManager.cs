@@ -3,6 +3,7 @@ using ShopApp.DataAccess.Abstract;
 using ShopApp.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ShopApp.Business.Concrete
@@ -16,27 +17,27 @@ namespace ShopApp.Business.Concrete
         }
         public void Create(Product entity)
         {
-            throw new NotImplementedException();
+            _productDal.Create(entity);
         }
 
         public void Delete(Product entity)
         {
-            throw new NotImplementedException();
+            _productDal.Delete(entity);
         }
 
         public List<Product> GetAll()
         {
-            throw new NotImplementedException();
+            return _productDal.GetAll().ToList();
         }
 
         public Product GetById(int id)
         {
-            throw new NotImplementedException();
+            return _productDal.GetById(id);
         }
 
         public void Update(Product entity)
         {
-            throw new NotImplementedException();
+            _productDal.Update(entity);
         }
     }
 }
