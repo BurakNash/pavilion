@@ -5,10 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Concrete\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\ShopApp.DataAccess\ShopApp.DataAccess.csproj" />
     <ProjectReference Include="..\ShopApp.Entities\ShopApp.Entities.csproj" />
   </ItemGroup>
 
