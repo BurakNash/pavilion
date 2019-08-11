@@ -7,8 +7,8 @@ using System.Text;
 
 namespace ShopApp.DataAccess.Abstract
 {
-    public interface IProductDal: IRepository<Product>
+    public interface ICategoryDal : IRepository<Category> //Takes all from IRepository
     {
-        IEnumerable<Product> GetPopularProducts();
+
     }
 }
