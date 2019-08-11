@@ -32,14 +32,14 @@ namespace ShopApp.DataAccess.Concrete.EfCore
             }
         }
 
-        public IQueryable<T> GetAll(Expression<Func<T, bool>> filter=null)
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter=null)
         {
             using (var context = new TContext())
             {
 
                 return filter == null //Is the filter null?
-                    ? context.Set<T>() //If it is null
-                    : context.Set<T>().Where(filter); //If it is not null, send filter
+                    ? context.Set<T>().ToList() //If it is null
+                    : context.Set<T>().Where(filter).ToList(); //If it is not null, send filter
 
             }
         }
