@@ -12989,7 +12989,8 @@
       "Microsoft.NETCore.App >= 2.2.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.2.3",
       "ShopApp.Business >= 1.0.0",
-      "ShopApp.DataAccess >= 1.0.0"
+      "ShopApp.DataAccess >= 1.0.0",
+      "ShopApp.Entities >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -13027,6 +13028,9 @@
             },
             "C:\\Users\\BURAK\\Desktop\\Capstone Backend\\ShopApp\\ShopApp.DataAccess\\ShopApp.DataAccess.csproj": {
               "projectPath": "C:\\Users\\BURAK\\Desktop\\Capstone Backend\\ShopApp\\ShopApp.DataAccess\\ShopApp.DataAccess.csproj"
+            },
+            "C:\\Users\\BURAK\\Desktop\\Capstone Backend\\ShopApp\\ShopApp.Entities\\ShopApp.Entities.csproj": {
+              "projectPath": "C:\\Users\\BURAK\\Desktop\\Capstone Backend\\ShopApp\\ShopApp.Entities\\ShopApp.Entities.csproj"
             }
           }
         }
