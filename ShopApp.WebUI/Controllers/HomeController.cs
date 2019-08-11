@@ -16,7 +16,7 @@ namespace ShopApp.WebUI.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            return View(_productService.GetAll());
         }
     }
 }
