@@ -10,7 +10,8 @@ namespace ShopApp.DataAccess.Abstract
     {
         T GetById(int id);
         T GetOne(Expression<Func<T, bool>> filter);
-        IQueryable<T> GetAll(Expression<Func<T, bool>> filter);
+        //If the user doesnt send an experssion, it will show all data (null value)
+        IQueryable<T> GetAll(Expression<Func<T, bool>> filter=null);
         void Create(T entity);
         void Update(T entity);
         void Delete(T entity);

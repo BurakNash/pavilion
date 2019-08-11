@@ -32,7 +32,7 @@ namespace ShopApp.DataAccess.Concrete.EfCore
             }
         }
 
-        public IQueryable<T> GetAll(Expression<Func<T, bool>> filter)
+        public IQueryable<T> GetAll(Expression<Func<T, bool>> filter=null)
         {
             throw new NotImplementedException();
         }
