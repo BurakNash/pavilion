@@ -22,6 +22,9 @@ namespace ShopApp.WebUI
             //If any method is chanhed in DataAccess
             services.AddScoped<IProductDal, MemoryProductDal>(); //Brings MemoryProductDal if Iproduct is called
             services.AddScoped<IProductService, ProductManager>();
+
+            services.AddMvc()
+                .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,10 +35,5 @@ namespace ShopApp.WebUI
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
-        }
     }
 }
