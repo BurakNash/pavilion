@@ -12,6 +12,13 @@ namespace ShopApp.DataAccess.Concrete.EfCore
         {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=ShopDb;intergrated security= true");
         }
+
+        //Assigning primary keys to join table ProductCategory
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ProductCategory>()
+                 .HasKey(c => new { c.CategoryId, c.Product });
+        }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
     }
