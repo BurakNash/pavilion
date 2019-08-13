@@ -24,7 +24,7 @@ namespace ShopApp.DataAccess.Concrete.EfCore
                 {
                     context.Products.AddRange(Products);
                 }
-                
+                context.SaveChanges();
             }
         }
         private static Product[] Products =
