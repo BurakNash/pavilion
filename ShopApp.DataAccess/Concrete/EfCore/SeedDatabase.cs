@@ -13,6 +13,7 @@ namespace ShopApp.DataAccess.Concrete.EfCore
         {
             var context = new ShopContext();
             //If the database is not updated with migration
+            //If there is any data received, SeedData call will not be sent
             if (context.Database.GetPendingMigrations().Count()==0)
             {
                 //If there is no category listed
