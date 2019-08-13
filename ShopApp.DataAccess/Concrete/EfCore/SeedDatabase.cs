@@ -20,13 +20,28 @@ namespace ShopApp.DataAccess.Concrete.EfCore
                 {
                     context.Categories.AddRange(Categories);
                 }
+                if(context.Products.Count()==0)
+                {
+                    context.Products.AddRange(Products);
+                }
                 
             }
         }
-        private static Category[] Categories=
+        private static Product[] Products =
+     {
+            new Product() {Name= "Samsung S5", Price=2000, ImageUrl="1.jpg"},
+            new Product() {Name= "Samsung S6", Price=2000, ImageUrl="1.jpg"},
+            new Product() {Name= "Samsung S7", Price=2000, ImageUrl="1.jpg"},
+            new Product() {Name= "Samsung S8", Price=2000, ImageUrl="1.jpg"},
+            new Product() {Name= "Samsung S9", Price=2000, ImageUrl="1.jpg"},
+            new Product() {Name= "Iphone 6", Price=2000, ImageUrl="1.jpg"},
+            new Product() {Name= "Iphone 7", Price=2000, ImageUrl="1.jpg"}
+            
+        };
+        private static Category[] Categories =
         {
             new Category() {Name= "Phones"},
             new Category() {Name= "Computer"}
-        }
+        };
     }
 }
