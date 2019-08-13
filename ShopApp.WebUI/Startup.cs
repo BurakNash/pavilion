@@ -21,8 +21,10 @@ namespace ShopApp.WebUI
         public void ConfigureServices(IServiceCollection services)
         {
             //If any method is chanhed in DataAccess
-            services.AddScoped<IProductDal, MemoryProductDal>(); //Brings MemoryProductDal if Iproduct is called
-            services.AddScoped<IProductService, ProductManager>();
+            //If you want to work with another data, you can just change the paramater EfCoreProductDal
+            //All layers are independent 
+            services.AddScoped<IProductDal, EfCoreProductDal>(); //DataAccess
+            services.AddScoped<IProductService, ProductManager>();//Business Logic
 
             services.AddMvc()
                 .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2);
