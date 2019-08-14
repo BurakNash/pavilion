@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.FileProviders;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,7 +17,7 @@ namespace ShopApp.WebUI.Middlewares
             var path = Path.Combine(Directory.GetCurrentDirectory(), "node_modules");
             var options = new StaticFileOptions
             {
-
+                FileProvider= new PhysicalFileProvider(path)
             }
         }
     }
