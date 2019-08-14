@@ -40,6 +40,8 @@ namespace ShopApp.WebUI
                 app.UseDeveloperExceptionPage();
                 SeedDatabase.Seed();
             }
+            app.UseStaticFiles();
+            app.CustomStaticFiles(); //Will need implementation
             app.UseMvcWithDefaultRoute();
         }
 
