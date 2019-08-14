@@ -11,6 +11,7 @@ using ShopApp.Business.Concrete;
 using ShopApp.DataAccess.Abstract;
 using ShopApp.DataAccess.Concrete.EfCore;
 using ShopApp.DataAccess.Concrete.Memory;
+using ShopApp.WebUI.Middlewares;
 
 namespace ShopApp.WebUI
 {
@@ -41,7 +42,7 @@ namespace ShopApp.WebUI
                 SeedDatabase.Seed();
             }
             app.UseStaticFiles();
-            app.CustomStaticFiles(); //Will need implementation
+            app.CustomStaticFiles(); //Opening node modules to the browser, study this part
             app.UseMvcWithDefaultRoute();
         }
 
