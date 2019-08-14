@@ -17,4 +17,9 @@
     <ProjectReference Include="..\ShopApp.Entities\ShopApp.Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+    <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
 </Project>
