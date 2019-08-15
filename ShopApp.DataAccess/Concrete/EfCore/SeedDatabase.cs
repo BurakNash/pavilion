@@ -30,9 +30,9 @@ namespace ShopApp.DataAccess.Concrete.EfCore
         }
         private static Product[] Products =
      {
-            new Product() {Name= "Samsung S5", Price=2000, ImageUrl="1.jpg"},
-            new Product() {Name= "Samsung S6", Price=2000, ImageUrl="2.jpg"},
-            new Product() {Name= "Samsung S7", Price=2000, ImageUrl="3.jpg"},
+            new Product() {Name= "Samsung S5", Price=500, ImageUrl="1.jpg"},
+            new Product() {Name= "Samsung S6", Price=600, ImageUrl="2.jpg"},
+            new Product() {Name= "Samsung S7", Price=650, ImageUrl="3.jpg"},
             new Product() {Name= "Samsung S8", Price=2000, ImageUrl="4.jpg"},
             new Product() {Name= "Samsung S9", Price=2000, ImageUrl="5.jpg"},
             new Product() {Name= "Iphone 6", Price=2000, ImageUrl="6.jpg"},
