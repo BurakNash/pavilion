@@ -1,4 +1,4 @@
-﻿@model ShopApp.WebUI.Models.ProductListModel
+﻿@model ProductListModel
 
     <div class="row">
         <div class="col-md-3">
@@ -13,10 +13,13 @@
 
             <partial name="_slider" />
 
-            @foreach (var item in Model.Products)
-            {
-                <p>@item.Name</p>
-            }
+            <div class="row mt-3">
+
+                @foreach (var product in Model.Products)
+                {
+                    <partial name="_product" for="@product" />
+                }
+            </div>
         </div>
     </div>
 
