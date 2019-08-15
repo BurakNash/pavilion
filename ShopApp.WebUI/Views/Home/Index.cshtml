@@ -13,9 +13,9 @@
 
             <partial name="_slider" />
 
-            @foreach (var item in Model.Products)
+            @foreach (var product in Model.Products)
             {
-                <p>@item.Name</p>
+                <partial name="_product" for="@product"/>
             }
         </div>
     </div>
