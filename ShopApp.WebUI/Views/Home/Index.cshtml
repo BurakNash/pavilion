@@ -13,10 +13,13 @@
 
             <partial name="_slider" />
 
-            @foreach (var product in Model.Products)
-            {
-                <partial name="_product" for="@product"/>
-            }
+            <div class="row">
+
+                @foreach (var product in Model.Products)
+                {
+                    <partial name="_product" for="@product" />
+                }
+            </div>
         </div>
     </div>
 
