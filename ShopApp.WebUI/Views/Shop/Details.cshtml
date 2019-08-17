@@ -6,6 +6,19 @@
     <div class="row">
 
         <div class="col-md-3"></div>
-        <div class="col-md-9"></div>
+        <img src="~/img/@Model.ImageUrl" alt="@Model.Name" class="img-fluid" />
+        <div class="col-md-9">
+            <h1 class="mb-3">
+                @Model.Name
+            </h1>
+            <hr />
+            <a href="#" class="btn btn-link p-0 mb-3">Phone</a>
+            <div class="mb-3">
+                <h4 class="text-primary mb-3 ">
+                    @Model.Price Dollar
+                </h4>
+            </div>
+
+        </div>
     </div>
 
