@@ -24,6 +24,7 @@ namespace ShopApp.DataAccess.Concrete.EfCore
                 if(context.Products.Count()==0)
                 {
                     context.Products.AddRange(Products);
+                    context.AddRange(ProductCategory);
                 }
                 context.SaveChanges();
             }
@@ -32,7 +33,9 @@ namespace ShopApp.DataAccess.Concrete.EfCore
         private static Category[] Categories =
         {
             new Category() {Name= "Phones"},
-            new Category() {Name= "Computer"}
+            new Category() {Name= "Computer"},
+            new Category() {Name= "Electronics"}
+
         };
 
         private static Product[] Products =
@@ -49,6 +52,12 @@ namespace ShopApp.DataAccess.Concrete.EfCore
         private static ProductCategory[] ProductCategory =
         {
             new ProductCategory() {Product= Products[0], Category=Categories[0]},
+            new ProductCategory() {Product= Products[0], Category=Categories[2]},
+            new ProductCategory() {Product= Products[1], Category=Categories[0]},
+            new ProductCategory() {Product= Products[1], Category=Categories[1]},
+            new ProductCategory() {Product= Products[2], Category=Categories[0]},
+            new ProductCategory() {Product= Products[2], Category=Categories[2]},
+            new ProductCategory() {Product= Products[3], Category=Categories[1]},
         };
 
 
