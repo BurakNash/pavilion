@@ -28,6 +28,13 @@ namespace ShopApp.DataAccess.Concrete.EfCore
                 context.SaveChanges();
             }
         }
+
+        private static Category[] Categories =
+        {
+            new Category() {Name= "Phones"},
+            new Category() {Name= "Computer"}
+        };
+
         private static Product[] Products =
      {
             new Product() {Name= "Samsung S5", Price=500, ImageUrl="1.jpg", Description="<p>What a phone!</p>"},
@@ -39,10 +46,11 @@ namespace ShopApp.DataAccess.Concrete.EfCore
             new Product() {Name= "Iphone 7", Price=2000, ImageUrl="7.jpg", Description="<p>What a phone!</p>"}
             
         };
-        private static Category[] Categories =
+        private static ProductCategory[] ProductCategory =
         {
-            new Category() {Name= "Phones"},
-            new Category() {Name= "Computer"}
+            new ProductCategory() {Product= Products[0], Category=Categories[0]},
         };
+
+
     }
 }
