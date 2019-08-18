@@ -22,12 +22,12 @@ namespace ShopApp.WebUI.Controllers
             {
                 return NotFound();
             }
-            Product product = _productService.GetById((int)id); //converting to int
+            Product product = _productService.GetProductDetails((int)id); //converting to int
             if (product==null)
             {
                 return NotFound();
             }
-            return View(product);
+            return View();
         }
         public IActionResult List()
         {
