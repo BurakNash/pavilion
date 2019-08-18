@@ -27,7 +27,7 @@ namespace ShopApp.WebUI.Controllers
             {
                 return NotFound();
             }
-            return View();
+            return View(new ProductDetailsModel());
         }
         public IActionResult List()
         {
