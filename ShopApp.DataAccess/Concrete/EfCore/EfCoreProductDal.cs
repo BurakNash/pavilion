@@ -26,7 +26,10 @@ namespace ShopApp.DataAccess.Concrete.EfCore
 
         public List<Product> GetProductsByCategory(string category)
         {
-            throw new NotImplementedException();
+            using (var context = new ShopContext())  //defining the context as ShopContext
+            {
+                var products = context.Products.AsQueryable();
+            }
         }
     }
 }
