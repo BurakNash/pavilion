@@ -16,7 +16,11 @@ namespace ShopApp.WebUI.ViewComponents
         }
         public IViewComponentResult Invoke()
         {
-            return View(_categoryService.GetAll());
+            return View(new CategoryListViewModel()
+            {
+
+            }
+                );
         }
     }
 }
