@@ -26,7 +26,7 @@ namespace ShopApp.Business.Concrete
 
         public List<Category> GetAll()
         {
-            throw new NotImplementedException();
+            return _categoryDal.GetAll();
         }
 
         public Product GetById(int id)
