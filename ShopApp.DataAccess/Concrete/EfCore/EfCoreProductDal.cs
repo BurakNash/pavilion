@@ -35,8 +35,9 @@ namespace ShopApp.DataAccess.Concrete.EfCore
                     products = products //Reaching to the products and checking if it has any item in it
                          .Include(i => i.ProductCategories)
                          .ThenInclude(i => i.Category)
-                         .Where(i => i.ProductCategories.Any(a => a.Category.Name == category));
+                         .Where(i => i.ProductCategories.Any(a => a.Category.Name.ToLower() == category.ToLower()));
                 }
+                return products.ToList();
             }
         }
     }
