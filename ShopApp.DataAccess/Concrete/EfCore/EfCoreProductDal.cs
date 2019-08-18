@@ -29,6 +29,14 @@ namespace ShopApp.DataAccess.Concrete.EfCore
             using (var context = new ShopContext())  //defining the context as ShopContext
             {
                 var products = context.Products.AsQueryable();
+
+                if (!string.IsNullOrEmpty(category)) //filtering
+                {
+                    products = products //Reaching to the products and checking if it has any item in it
+                         .Include(i => i.ProductCategories)
+                         .ThenInclude(i => i.Category)
+                         .Where(i => i.ProductCategories.Any(a => a.Category.Name == category));
+                }
             }
         }
     }
