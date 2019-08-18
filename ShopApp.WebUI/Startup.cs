@@ -24,8 +24,10 @@ namespace ShopApp.WebUI
             //If any method is chanhed in DataAccess
             //If you want to work with another data, you can just change the paramater EfCoreProductDal
             //All layers are independent 
-            services.AddScoped<IProductDal, EfCoreProductDal>(); //DataAccess
+            services.AddScoped<IProductDal, EfCoreProductDal>();
+            services.AddScoped<ICategoryDal, EfCoreCategoryDal>(); //DataAccess
             services.AddScoped<IProductService, ProductManager>();//Business Logic
+            services.AddScoped<ICategoryService, CategoryManager>();
 
             services.AddMvc()
                 .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2);
