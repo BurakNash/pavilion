@@ -27,7 +27,12 @@ namespace ShopApp.WebUI.Controllers
             {
                 return NotFound();
             }
-            return View(new ProductDetailsModel());
+            return View(new ProductDetailsModel()
+            {
+                Product = product,
+                Categories = product.ProductCategories.Select(i => i.Category).ToList() //Study
+
+            }) ;
         }
         public IActionResult List()
         {
