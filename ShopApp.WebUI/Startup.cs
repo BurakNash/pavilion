@@ -48,6 +48,13 @@ namespace ShopApp.WebUI
             app.CustomStaticFiles(); //Opening node modules to the browser, study this part
             app.UseMvc(routes =>
             {
+                //Filtering and showing certain products to the user
+                routes.MapRoute(
+                    name: "products",
+                    template: "products/{category?}", //Will send the products according to their category, ? makes optional
+                    defaults: new {controller="Shop", action= "List"}
+                    );
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=index}/{id?}"
