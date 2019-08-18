@@ -11,10 +11,6 @@ namespace ShopApp.DataAccess.Concrete.EfCore
 {
     public class EfCoreProductDal : EfCoreGenericRepository<Product, ShopContext>, IProductDal
     {
-        public IEnumerable<Product> GetPopularProducts()
-        {
-            throw new NotImplementedException();
-        }
 
         public Product GetProductDetails(int id)
         {
@@ -26,6 +22,11 @@ namespace ShopApp.DataAccess.Concrete.EfCore
                     .ThenInclude(i => i.Category)
                     .FirstOrDefault();
             }
+        }
+
+        public List<Product> GetProductsByCategory(string category)
+        {
+            throw new NotImplementedException();
         }
     }
 }
