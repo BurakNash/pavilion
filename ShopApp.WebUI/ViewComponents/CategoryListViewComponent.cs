@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShopApp.Business.Abstract;
+using ShopApp.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace ShopApp.WebUI.ViewComponents
         {
             return View(new CategoryListViewModel()
             {
-
+                Categories = _categoryService.GetAll()
             }
                 );
         }
