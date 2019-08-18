@@ -24,25 +24,42 @@ namespace ShopApp.DataAccess.Concrete.EfCore
                 if(context.Products.Count()==0)
                 {
                     context.Products.AddRange(Products);
+                    context.AddRange(ProductCategory);
                 }
                 context.SaveChanges();
             }
         }
-        private static Product[] Products =
-     {
-            new Product() {Name= "Samsung S5", Price=500, ImageUrl="1.jpg"},
-            new Product() {Name= "Samsung S6", Price=600, ImageUrl="2.jpg"},
-            new Product() {Name= "Samsung S7", Price=650, ImageUrl="3.jpg"},
-            new Product() {Name= "Samsung S8", Price=2000, ImageUrl="4.jpg"},
-            new Product() {Name= "Samsung S9", Price=2000, ImageUrl="5.jpg"},
-            new Product() {Name= "Iphone 6", Price=2000, ImageUrl="6.jpg"},
-            new Product() {Name= "Iphone 7", Price=2000, ImageUrl="7.jpg"}
-            
-        };
+
         private static Category[] Categories =
         {
             new Category() {Name= "Phones"},
-            new Category() {Name= "Computer"}
+            new Category() {Name= "Computer"},
+            new Category() {Name= "Electronics"}
+
         };
+
+        private static Product[] Products =
+     {
+            new Product() {Name= "Samsung S5", Price=500, ImageUrl="1.jpg", Description="<p>What a phone!</p>"},
+            new Product() {Name= "Samsung S6", Price=600, ImageUrl="2.jpg", Description="<p>What a phone!</p>"},
+            new Product() {Name= "Samsung S7", Price=650, ImageUrl="3.jpg", Description="<p>What a phone!</p>"},
+            new Product() {Name= "Samsung S8", Price=2000, ImageUrl="4.jpg", Description="<p>What a phone!</p>"},
+            new Product() {Name= "Samsung S9", Price=2000, ImageUrl="5.jpg", Description="<p>What a phone!</p>"},
+            new Product() {Name= "Iphone 6", Price=2000, ImageUrl="6.jpg", Description="<p>What a phone!</p>"},
+            new Product() {Name= "Iphone 7", Price=2000, ImageUrl="7.jpg", Description="<p>What a phone!</p>"}
+            
+        };
+        private static ProductCategory[] ProductCategory =
+        {
+            new ProductCategory() {Product= Products[0], Category=Categories[0]},
+            new ProductCategory() {Product= Products[0], Category=Categories[2]},
+            new ProductCategory() {Product= Products[1], Category=Categories[0]},
+            new ProductCategory() {Product= Products[1], Category=Categories[1]},
+            new ProductCategory() {Product= Products[2], Category=Categories[0]},
+            new ProductCategory() {Product= Products[2], Category=Categories[2]},
+            new ProductCategory() {Product= Products[3], Category=Categories[1]},
+        };
+
+
     }
 }
