@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using ShopApp.Business.Abstract;
 using ShopApp.Business.Concrete;
 using ShopApp.DataAccess.Abstract;
 using ShopApp.DataAccess.Concrete.EfCore;
-using ShopApp.DataAccess.Concrete.Memory;
 using ShopApp.WebUI.Middlewares;
 
 namespace ShopApp.WebUI
@@ -45,7 +45,21 @@ namespace ShopApp.WebUI
             }
             app.UseStaticFiles();
             app.CustomStaticFiles(); //Opening node modules to the browser, study this part
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc(routes =>
+            {
+                //Filtering and showing certain products to the user
+                routes.MapRoute(
+                    name: "products",
+                    template: "products/{category?}", //Will send the products according to their category, ? makes optional
+                    defaults: new {controller="Shop", action= "List"}
+                    );
+
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=index}/{id?}"
+                    );
+
+            });
         }
 
     }
