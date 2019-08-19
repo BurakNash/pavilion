@@ -24,7 +24,7 @@ namespace ShopApp.DataAccess.Concrete.EfCore
             }
         }
 
-        public List<Product> GetProductsByCategory(string category, int page)
+        public List<Product> GetProductsByCategory(string category, int page, int pageSize)
         {
             using (var context = new ShopContext())  //defining the context as ShopContext
             {
