@@ -9,7 +9,7 @@
                asp-controller="Shop"
                asp-action="List"
                asp-route-category="@item.Name.ToLower()"
-               class="list-group-item list-group-item-action">
+               class="list-group-item list-group-item-action @(Model.SelectedCategory==item.Name.ToLower()?"active" : "")">
                 
                 @item.Name
 
