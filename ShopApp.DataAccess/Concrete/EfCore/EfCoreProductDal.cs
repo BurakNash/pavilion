@@ -37,7 +37,8 @@ namespace ShopApp.DataAccess.Concrete.EfCore
                          .ThenInclude(i => i.Category)
                          .Where(i => i.ProductCategories.Any(a => a.Category.Name.ToLower() == category.ToLower()));
                 }
-                return products.ToList();
+                //How many item will be skipped and taken each time the user changes pages
+                return products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
             }
         }
     }
