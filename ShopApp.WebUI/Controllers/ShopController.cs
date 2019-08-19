@@ -34,11 +34,12 @@ namespace ShopApp.WebUI.Controllers
 
             }) ;
         }
-        public IActionResult List(string category)
+        //products/phones?page=2
+        public IActionResult List(string category, int page = 1)
         {
             return View(new ProductListModel()
             {
-                Products = _productService.GetProductsByCategory(category)
+                Products = _productService.GetProductsByCategory(category, page)
             });
         }
     }
