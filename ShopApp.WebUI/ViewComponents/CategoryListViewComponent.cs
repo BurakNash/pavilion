@@ -19,7 +19,8 @@ namespace ShopApp.WebUI.ViewComponents
         {
             return View(new CategoryListViewModel()
             {
-                SelectedCategory = RouteData.Values["category"].ToString(),
+                SelectedCategory = RouteData.Values["category"]?.ToString(),
+                // ? makes it run only if the data coming is not NULL. If it is null, It cancels the ToString
                 //receiving the values from the category route, To convert object type to string adding ToString
                 Categories = _categoryService.GetAll()
             });
