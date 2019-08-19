@@ -19,9 +19,10 @@ namespace ShopApp.WebUI.ViewComponents
         {
             return View(new CategoryListViewModel()
             {
+                SelectedCategory = RouteData.Values["category"].ToString(),
+                //receiving the values from the category route, To convert object type to string adding ToString
                 Categories = _categoryService.GetAll()
-            }
-                );
+            });
         }
     }
 }
