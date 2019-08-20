@@ -15,6 +15,7 @@ namespace ShopApp.WebUI.Models
         public int TotalPages()
         {
             return (int)Math.Ceiling((decimal)TotalItems / ItemsPerPage);
+            //returning int value with math.ceiling
         }
     }
     public class ProductListModel
