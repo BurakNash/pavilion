@@ -22,7 +22,7 @@ namespace ShopApp.WebUI.TagHelpers
 
             for (int i = 1; i < PageInfo.TotalPages(); i++)
             {
-
+                stringBuilder.AppendFormat("<li class='page-item{0}'>", i == PageInfo.CurrentPage ? "active" : "");
             }
 
             base.Process(context, output);
