@@ -23,6 +23,11 @@ namespace ShopApp.WebUI.TagHelpers
             for (int i = 1; i < PageInfo.TotalPages(); i++)
             {
                 stringBuilder.AppendFormat("<li class='page-item{0}'>", i == PageInfo.CurrentPage ? "active" : "");
+                
+                if (string.IsNullOrEmpty(PageInfo.CurrentCategory))
+                {
+                    stringBuilder.AppendFormat("<a class='page-link' href='/products?page={0}'>{0}</a>", i);
+                }
             }
 
             base.Process(context, output);
