@@ -11,6 +11,23 @@ namespace ShopApp.DataAccess.Concrete.EfCore
 {
     public class EfCoreProductDal : EfCoreGenericRepository<Product, ShopContext>, IProductDal
     {
+        public int GetCountByCategory(string category)
+        {
+            using (var context = new ShopContext())  //defining the context as ShopContext
+            {
+                var products = context.Products.AsQueryable();
+
+                if (!string.IsNullOrEmpty(category)) //filtering
+                {
+                    products = products //Reaching to the products and checking if it has any item in it
+                         .Include(i => i.ProductCategories)
+                         .ThenInclude(i => i.Category)
+                         .Where(i => i.ProductCategories.Any(a => a.Category.Name.ToLower() == category.ToLower()));
+                }
+                //How many item will be skipped and taken each time the user changes pages
+                return products.Count();
+            }
+        }
 
         public Product GetProductDetails(int id)
         {
