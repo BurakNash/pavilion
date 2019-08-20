@@ -1,5 +1,6 @@
 ﻿using ShopApp.Business.Abstract;
 using ShopApp.DataAccess.Abstract;
+using ShopApp.DataAccess.Concrete.EfCore;
 using ShopApp.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,13 @@ namespace ShopApp.Business.Concrete
 {
     public class ProductManager : IProductService
     {
-        private IProductDal _productDal; //Accesssing ProductDal and gettting the functions
+        private IProductDal _productDal;
+
         public ProductManager(IProductDal productDal)
         {
-            _productDal = productDal; //connecting objects 
+            _productDal = productDal;
         }
+
         public void Create(Product entity)
         {
             _productDal.Create(entity);

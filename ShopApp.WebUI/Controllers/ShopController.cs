@@ -16,38 +16,39 @@ namespace ShopApp.WebUI.Controllers
         {
             _productService = productService;
         }
-        public IActionResult Details(int? id) //Nullable
+
+        public IActionResult Details(int? id)
         {
-            if (id==null)
+            if (id == null)
             {
                 return NotFound();
             }
-            Product product = _productService.GetProductDetails((int)id); //converting to int
-            if (product==null)
+            Product product = _productService.GetProductDetails((int)id);
+            if (product == null)
             {
                 return NotFound();
             }
             return View(new ProductDetailsModel()
             {
                 Product = product,
-                Categories = product.ProductCategories.Select(i => i.Category).ToList() //Study
-
-            }) ;
+                Categories = product.ProductCategories.Select(i => i.Category).ToList()
+            });
         }
-        //products/phones?page=2
+
+        //products/telefon?page=2
         public IActionResult List(string category, int page = 1)
         {
             const int pageSize = 3;
             return View(new ProductListModel()
             {
-                PageInfo = new PageInfo()
+                Products = _productService.GetProductsByCategory(category, page, pageSize),
+                PagingInfo = new PagingInfo()
                 {
-                    TotalItems = _productService.GetCountByCategory(category),
                     CurrentPage = page,
                     ItemsPerPage = pageSize,
+                    TotalItems = _productService.GetCountByCategory(category),
                     CurrentCategory = category
-                },
-                Products = _productService.GetProductsByCategory(category, page, pageSize)
+                }
             });
         }
     }
