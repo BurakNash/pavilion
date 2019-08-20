@@ -15,15 +15,15 @@ namespace ShopApp.WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateProduct(Product entity)
+        public IActionResult CreateProduct()
         {
-
+            return View();
         }
 
         [HttpPost]
         public IActionResult CreateProduct(Product entity)
         {
-
+            return Redirect("index");
         }
 
 
