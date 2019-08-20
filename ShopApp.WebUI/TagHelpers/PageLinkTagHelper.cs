@@ -28,6 +28,11 @@ namespace ShopApp.WebUI.TagHelpers
                 {
                     stringBuilder.AppendFormat("<a class='page-link' href='/products?page={0}'>{0}</a>", i);
                 }
+                else
+                {
+                    stringBuilder.AppendFormat("<a class='page-link' href='/products/{1}?page={0}'>{0}</a>", i, PageInfo.CurrentCategory);
+                    //If the currenty category is not null or empty, stringbuilder will locate to product/ subfolder
+                }
             }
 
             base.Process(context, output);
