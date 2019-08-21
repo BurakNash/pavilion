@@ -44,10 +44,15 @@ namespace ShopApp.WebUI.Controllers
 
             return Redirect("index");
         }
-        public IActionResult Edit(int id)
+        public IActionResult Edit(int? id) //optional
         {
-            var entity = _productService.GetById(id);
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var entity = _productService.GetById((int)id);//nullable to int conversion
             var model = new ProductModel()
+           
             {
                 Id = entity.Id,
                 Name= entity.Name,
