@@ -12,9 +12,11 @@ namespace ShopApp.WebUI.Controllers
     public class AdminController : Controller
     {
         private IProductService _productService;
-        public AdminController(IProductService productService)
+        private ICategoryService _categoryService; //Injection
+        public AdminController(IProductService productService, ICategoryService categoryService)
         {
             _productService = productService;
+            _categoryService = categoryService;
         }
         public IActionResult ProductList()
         {
@@ -95,6 +97,14 @@ namespace ShopApp.WebUI.Controllers
                 _productService.Delete(entity);
             }
             return RedirectToAction("Index");
+        }
+
+        public IActionResult CategoryList()
+        {
+            return View(new CategoryListModel()
+            {
+                Categories = _categoryService.GetAll()
+            });
         }
     }
 }
