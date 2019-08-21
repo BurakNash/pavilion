@@ -46,7 +46,16 @@ namespace ShopApp.WebUI.Controllers
         }
         public IActionResult Edit(int id)
         {
-            return View();
+            var entity = _productService.GetById(id);
+            var model = new ProductModel()
+            {
+                Id = entity.Id,
+                Name= entity.Name,
+                Price= entity.Price,
+                Description= entity.Description,
+                ImageUrl= entity.ImageUrl
+            };
+            return View(new ProductModel());
         }
         [HttpPost]
         public IActionResult Edit(ProductModel model)
