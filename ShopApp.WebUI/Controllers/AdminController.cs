@@ -66,7 +66,7 @@ namespace ShopApp.WebUI.Controllers
                 Description= entity.Description,
                 ImageUrl= entity.ImageUrl
             };
-            return View(new ProductModel());
+            return View(model);
         }
         [HttpPost]
         public IActionResult Edit(ProductModel model)
