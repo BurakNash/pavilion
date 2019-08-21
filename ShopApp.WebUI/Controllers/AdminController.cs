@@ -42,9 +42,49 @@ namespace ShopApp.WebUI.Controllers
             };
             _productService.Create(entity);
 
-            return Redirect("index");
+            return RedirectToAction("index");
         }
+        public IActionResult Edit(int? id) //optional
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var entity = _productService.GetById((int)id);//nullable to int conversion
 
+            if (entity == null)
+            {
+                return NotFound();
+            }
+
+            var model = new ProductModel()
+           
+            {
+                Id = entity.Id,
+                Name= entity.Name,
+                Price= entity.Price,
+                Description= entity.Description,
+                ImageUrl= entity.ImageUrl
+            };
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult Edit(ProductModel model)
+        {
+            var entity = _productService.GetById(model.Id);
+            if (entity == null)
+            {
+                return NotFound();
+            }
+
+            entity.Name = model.Name;
+            entity.Price = model.Price;
+            entity.Description = model.Description;
+            entity.ImageUrl = model.ImageUrl;
+
+            _productService.Update(entity);
+            return RedirectToAction("Index");
+        }
 
     }
 }
