@@ -16,7 +16,7 @@ namespace ShopApp.WebUI.Controllers
         {
             _productService = productService;
         }
-        public IActionResult Index()
+        public IActionResult ProductList()
         {
             return View(new ProductListModel()
             {
@@ -44,7 +44,7 @@ namespace ShopApp.WebUI.Controllers
 
             return RedirectToAction("index");
         }
-        public IActionResult Edit(int? id) //optional
+        public IActionResult EditProduct(int? id) //optional
         {
             if (id == null)
             {
@@ -69,7 +69,7 @@ namespace ShopApp.WebUI.Controllers
             return View(model);
         }
         [HttpPost]
-        public IActionResult Edit(ProductModel model)
+        public IActionResult EditProduct(ProductModel model)
         {
             var entity = _productService.GetById(model.Id);
             if (entity == null)
@@ -87,7 +87,7 @@ namespace ShopApp.WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete (int productId)
+        public IActionResult DeleteProduct (int productId)
         {
             var entity = _productService.GetById(productId);
             if (entity != null)
