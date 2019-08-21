@@ -76,6 +76,13 @@ namespace ShopApp.WebUI.Controllers
             {
                 return NotFound();
             }
+
+            entity.Name = model.Name;
+            entity.Price = model.Price;
+            entity.Description = model.Description;
+            entity.ImageUrl = model.ImageUrl;
+
+            _productService.Update(entity);
             return Redirect("Index");
         }
 
