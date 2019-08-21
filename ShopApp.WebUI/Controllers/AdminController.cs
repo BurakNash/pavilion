@@ -86,5 +86,8 @@ namespace ShopApp.WebUI.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public IActionResult Delete (int productId)
+
     }
 }
