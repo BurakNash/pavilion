@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ShopApp.Entities;
+using ShopApp.WebUI.Models;
 
 namespace ShopApp.WebUI.Controllers
 {
@@ -21,8 +22,12 @@ namespace ShopApp.WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateProduct(Product entity)//entities bringing the product information, no need to write eachtime
+        public IActionResult CreateProduct(ProductModel model)//entities bringing the product information, no need to write eachtime
         {
+            var entity = new Product()
+            {
+
+            };
             return Redirect("index");
         }
 
