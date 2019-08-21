@@ -51,6 +51,12 @@ namespace ShopApp.WebUI.Controllers
                 return NotFound();
             }
             var entity = _productService.GetById((int)id);//nullable to int conversion
+
+            if (entity == null)
+            {
+                return NotFound();
+            }
+
             var model = new ProductModel()
            
             {
