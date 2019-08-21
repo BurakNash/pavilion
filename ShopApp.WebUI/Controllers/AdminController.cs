@@ -71,6 +71,11 @@ namespace ShopApp.WebUI.Controllers
         [HttpPost]
         public IActionResult Edit(ProductModel model)
         {
+            var entity = _productService.GetById(model.Id);
+            if (entity == null)
+            {
+                return NotFound();
+            }
             return Redirect("Index");
         }
 
