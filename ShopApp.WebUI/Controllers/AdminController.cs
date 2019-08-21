@@ -51,7 +51,7 @@ namespace ShopApp.WebUI.Controllers
         [HttpPost]
         public IActionResult Edit(ProductModel model)
         {
-            return Redirect(Index);
+            return Redirect("Index");
         }
 
     }
