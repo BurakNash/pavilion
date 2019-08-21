@@ -26,7 +26,10 @@ namespace ShopApp.WebUI.Controllers
         {
             var entity = new Product()
             {
-
+                Name = model.Name,
+                Price = model.Price,
+                Description = model.Description, 
+                ImageUrl = model.ImageUrl
             };
             return Redirect("index");
         }
