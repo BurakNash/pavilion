@@ -106,5 +106,27 @@ namespace ShopApp.WebUI.Controllers
                 Categories = _categoryService.GetAll()
             });
         }
+
+        [HttpGet]
+        public IActionResult CreateCategory()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CreateCategory(CategoryModel model)
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult EditCategory(int categoryId)
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult EditCategory(CategoryModel model)
+        {
+            return View();
+        }
     }
 }
