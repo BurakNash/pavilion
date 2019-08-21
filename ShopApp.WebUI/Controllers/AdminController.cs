@@ -42,7 +42,7 @@ namespace ShopApp.WebUI.Controllers
             };
             _productService.Create(entity);
 
-            return Redirect("index");
+            return RedirectToAction("index");
         }
         public IActionResult Edit(int? id) //optional
         {
@@ -83,7 +83,7 @@ namespace ShopApp.WebUI.Controllers
             entity.ImageUrl = model.ImageUrl;
 
             _productService.Update(entity);
-            return Redirect("Index");
+            return RedirectToAction("Index");
         }
 
     }
