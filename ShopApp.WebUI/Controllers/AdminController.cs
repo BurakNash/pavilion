@@ -37,6 +37,8 @@ namespace ShopApp.WebUI.Controllers
                 Description = model.Description, 
                 ImageUrl = model.ImageUrl
             };
+            _productService.Create(entity);
+
             return Redirect("index");
         }
 
