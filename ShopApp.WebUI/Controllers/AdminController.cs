@@ -44,7 +44,15 @@ namespace ShopApp.WebUI.Controllers
 
             return Redirect("index");
         }
-
+        public IActionResult Edit(int id)
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Edit(ProductModel model)
+        {
+            return Redirect(Index);
+        }
 
     }
 }
