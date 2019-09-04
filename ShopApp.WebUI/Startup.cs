@@ -51,12 +51,12 @@ namespace ShopApp.WebUI
                 routes.MapRoute(
                    name: "adminProducts",
                    template: "admin/products", //Will send the products according to their category, ? makes optional
-                   defaults: new { controller = "Admin", action = "Index" }
+                   defaults: new { controller = "Admin", action = "ProductList" }
                    );
                 routes.MapRoute(
                name: "adminProducts",
                template: "admin/products/{id}", //Will send the products according to their category, ? makes optional
-               defaults: new { controller = "Admin", action = "Edit" }
+               defaults: new { controller = "Admin", action = "EditProduct" }
                );
                 //Filtering and showing certain products to the user
                 routes.MapRoute(
