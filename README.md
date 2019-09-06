@@ -1,5 +1,5 @@
-# PROJECT-Shopping-Application
-Project: Shopping Application (In progress): C#, Asp.NET Core, Mvc, Sql, Json, Bootstrap, EfCore, Identity Core, Lyzico payment, 
+# PROJECT-Pavilion
+Project: Pavilion - Jewlery Store (In progress): C#, Asp.NET Core, Mvc, Sql, Json, Bootstrap, EfCore, Identity Core, Lyzico payment, 
 
 <h3>Technologies, frameworks and languages used:</h3>
 <ul>
