@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pavilion.DataAccess\Pavilion.DataAccess.csproj" />
+    <ProjectReference Include="..\Pavilion.Entities\Pavilion.Entities.csproj" />
+  </ItemGroup>
+
+</Project>
