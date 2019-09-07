@@ -7,11 +7,12 @@ using System.Text;
 
 namespace Pavilion.DataAccess.Abstract
 {
-    public interface IProductDal: IRepository<Product>
+   public interface IProductDal:IRepository<Product>
     {
         List<Product> GetProductsByCategory(string category, int page, int pageSize);
 
         Product GetProductDetails(int id);
+
         int GetCountByCategory(string category);
     }
 }

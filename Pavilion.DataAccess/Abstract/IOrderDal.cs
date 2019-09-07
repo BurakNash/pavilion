@@ -5,7 +5,8 @@ using System.Text;
 
 namespace Pavilion.DataAccess.Abstract
 {
-   public interface IOrderDal : IRepository<Order>
+   public interface IOrderDal:IRepository<Order>
     {
+
     }
 }

@@ -9,20 +9,18 @@ using System.Text;
 namespace Pavilion.DataAccess.Concrete.EfCore
 {
     public class EfCoreGenericRepository<T, TContext> : IRepository<T>
-         //Restricting generic paramaters
-         where T : class
-         where TContext : DbContext, new()
-
-
-    {
+        where T : class
+        where TContext : DbContext, new()
+    {       
         public void Create(T entity)
         {
-            using (var context= new TContext())
+            using (var context = new TContext())
             {
                 context.Set<T>().Add(entity);
                 context.SaveChanges();
             }
         }
+
         public void Delete(T entity)
         {
             using (var context = new TContext())
@@ -32,15 +30,13 @@ namespace Pavilion.DataAccess.Concrete.EfCore
             }
         }
 
-        public List<T> GetAll(Expression<Func<T, bool>> filter=null)
+        public List<T> GetAll(Expression<Func<T, bool>> filter = null)
         {
             using (var context = new TContext())
             {
-
-                return filter == null //Is the filter null?
-                    ? context.Set<T>().ToList() //If it is null
-                    : context.Set<T>().Where(filter).ToList(); //If it is not null, send filter
-
+                return filter == null
+                         ? context.Set<T>().ToList()
+                         : context.Set<T>().Where(filter).ToList();
             }
         }
 
@@ -50,15 +46,13 @@ namespace Pavilion.DataAccess.Concrete.EfCore
             {
                 return context.Set<T>().Find(id);
             }
-
-
         }
 
         public T GetOne(Expression<Func<T, bool>> filter)
         {
             using (var context = new TContext())
             {
-                return context.Set<T>().Where(filter).SingleOrDefault(); //Will send single or null value 
+                return context.Set<T>().Where(filter).SingleOrDefault();
             }
         }
 
@@ -66,7 +60,7 @@ namespace Pavilion.DataAccess.Concrete.EfCore
         {
             using (var context = new TContext())
             {
-                context.Entry(entity).State = EntityState.Modified; //It will update the entity as it is changed
+                context.Entry(entity).State = EntityState.Modified;
                 context.SaveChanges();
             }
         }

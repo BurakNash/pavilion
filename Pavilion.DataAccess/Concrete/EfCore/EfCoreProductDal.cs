@@ -13,18 +13,18 @@ namespace Pavilion.DataAccess.Concrete.EfCore
     {
         public int GetCountByCategory(string category)
         {
-            using (var context = new ShopContext())  //defining the context as ShopContext
+            using (var context = new ShopContext())
             {
                 var products = context.Products.AsQueryable();
 
-                if (!string.IsNullOrEmpty(category)) //filtering
+                if (!string.IsNullOrEmpty(category))
                 {
-                    products = products //Reaching to the products and checking if it has any item in it
-                         .Include(i => i.ProductCategories)
-                         .ThenInclude(i => i.Category)
-                         .Where(i => i.ProductCategories.Any(a => a.Category.Name.ToLower() == category.ToLower()));
+                    products = products
+                                .Include(i => i.ProductCategories)
+                                .ThenInclude(i => i.Category)
+                                .Where(i => i.ProductCategories.Any(a => a.Category.Name.ToLower() == category.ToLower()));
                 }
-                //How many item will be skipped and taken each time the user changes pages
+
                 return products.Count();
             }
         }
@@ -34,27 +34,27 @@ namespace Pavilion.DataAccess.Concrete.EfCore
             using (var context = new ShopContext())
             {
                 return context.Products
-                    .Where(i => i.Id == id)
-                    .Include(i => i.ProductCategories)
-                    .ThenInclude(i => i.Category)
-                    .FirstOrDefault();
+                            .Where(i => i.Id == id)
+                            .Include(i => i.ProductCategories)
+                            .ThenInclude(i => i.Category)
+                            .FirstOrDefault();
             }
         }
 
         public List<Product> GetProductsByCategory(string category, int page, int pageSize)
         {
-            using (var context = new ShopContext())  //defining the context as ShopContext
+            using (var context = new ShopContext())
             {
                 var products = context.Products.AsQueryable();
 
-                if (!string.IsNullOrEmpty(category)) //filtering
+                if (!string.IsNullOrEmpty(category))
                 {
-                    products = products //Reaching to the products and checking if it has any item in it
-                         .Include(i => i.ProductCategories)
-                         .ThenInclude(i => i.Category)
-                         .Where(i => i.ProductCategories.Any(a => a.Category.Name.ToLower() == category.ToLower()));
+                    products = products
+                                .Include(i => i.ProductCategories)
+                                .ThenInclude(i => i.Category)
+                                .Where(i => i.ProductCategories.Any(a => a.Category.Name.ToLower() == category.ToLower()));
                 }
-                //How many item will be skipped and taken each time the user changes pages
+
                 return products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
             }
         }

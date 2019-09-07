@@ -10,7 +10,7 @@ namespace Pavilion.Business.Abstract
         Product GetById(int id);
         Product GetProductDetails(int id);
         List<Product> GetAll();
-        List<Product> GetProductsByCategory(string category, int page, int pageSize);
+        List<Product> GetProductsByCategory(string category,int page, int pageSize);
         int GetCountByCategory(string category);
         void Create(Product entity);
         void Update(Product entity);

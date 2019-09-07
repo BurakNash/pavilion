@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Pavilion.DataAccess.Concrete.EfCore
 {
-    public class EfCoreOrderDal : EfCoreGenericRepository<Order, ShopContext> , IOrderDal
+   public class EfCoreOrderDal:EfCoreGenericRepository<Order,ShopContext>,IOrderDal
     {
     }
 }
