@@ -11,10 +11,9 @@ namespace Pavilion.WebUI.Middlewares
     public static class ApplicationBuilderExtensions
     {
         public static IApplicationBuilder CustomStaticFiles(this IApplicationBuilder app)
-            //"this" extends the next class in the parameter list
-            //Subclass system, study this
         {
             var path = Path.Combine(Directory.GetCurrentDirectory(), "node_modules");
+
             var options = new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(path),

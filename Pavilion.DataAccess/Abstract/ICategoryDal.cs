@@ -7,8 +7,8 @@ using System.Text;
 
 namespace Pavilion.DataAccess.Abstract
 {
-    public interface ICategoryDal : IRepository<Category> //Takes all from IRepository
+    public interface ICategoryDal : IRepository<Category>
     {
-
+        Category GetByIdWithProducts(int id);
     }
 }

@@ -7,59 +7,56 @@ using System.Text;
 
 namespace Pavilion.DataAccess.Concrete.EfCore
 {
-    public static class SeedDatabase //providing blueprint for inherited classes
+    public static class SeedDatabase
     {
-        public static void Seed ()
+        public static void Seed()
         {
             var context = new ShopContext();
-            //If the database is not updated with migration
-            //If there is any data received, SeedData call will not be sent
-            if (context.Database.GetPendingMigrations().Count()==0)
+
+            if (context.Database.GetPendingMigrations().Count() == 0)
             {
-                //If there is no category listed
-                if(context.Categories.Count()==0)
+                if (context.Categories.Count() == 0)
                 {
                     context.Categories.AddRange(Categories);
                 }
-                if(context.Products.Count()==0)
+
+                if (context.Products.Count() == 0)
                 {
                     context.Products.AddRange(Products);
                     context.AddRange(ProductCategory);
                 }
+
                 context.SaveChanges();
             }
         }
 
-        private static Category[] Categories =
-        {
-            new Category() {Name= "Phones"},
-            new Category() {Name= "Computer"},
-            new Category() {Name= "Electronics"}
-
+        private static Category[] Categories = {
+            new Category() { Name="Phone"},
+            new Category() { Name="Computer"},
+            new Category() { Name="Electronics"}
         };
 
         private static Product[] Products =
-     {
-            new Product() {Name= "Samsung S5", Price=500, ImageUrl="1.jpg", Description="<p>What a phone!</p>"},
-            new Product() {Name= "Samsung S6", Price=600, ImageUrl="2.jpg", Description="<p>What a phone!</p>"},
-            new Product() {Name= "Samsung S7", Price=650, ImageUrl="3.jpg", Description="<p>What a phone!</p>"},
-            new Product() {Name= "Samsung S8", Price=2000, ImageUrl="4.jpg", Description="<p>What a phone!</p>"},
-            new Product() {Name= "Samsung S9", Price=2000, ImageUrl="5.jpg", Description="<p>What a phone!</p>"},
-            new Product() {Name= "Iphone 6", Price=2000, ImageUrl="6.jpg", Description="<p>What a phone!</p>"},
-            new Product() {Name= "Iphone 7", Price=2000, ImageUrl="7.jpg", Description="<p>What a phone!</p>"}
-            
+        {
+            new Product(){ Name="Samsung S5", Price=2000, ImageUrl="1.jpg", Description="<p>güzel telefon</p>"},
+            new Product(){ Name="Samsung S6", Price=3000, ImageUrl="2.jpg", Description="<p>güzel telefon</p>"},
+            new Product(){ Name="Samsung S7", Price=4000, ImageUrl="3.jpg", Description="<p>güzel telefon</p>"},
+            new Product(){ Name="Samsung S8", Price=5000, ImageUrl="4.jpg", Description="<p>güzel telefon</p>"},
+            new Product(){ Name="Samsung S9", Price=6000, ImageUrl="5.jpg", Description="<p>güzel telefon</p>"},
+            new Product(){ Name="IPhone 6", Price=4000, ImageUrl="6.jpg", Description="<p>güzel telefon</p>"},
+            new Product(){ Name="IPhone 7", Price=5000, ImageUrl="7.jpg", Description="<p>güzel telefon</p>"}
         };
+
+
         private static ProductCategory[] ProductCategory =
         {
-            new ProductCategory() {Product= Products[0], Category=Categories[0]},
-            new ProductCategory() {Product= Products[0], Category=Categories[2]},
-            new ProductCategory() {Product= Products[1], Category=Categories[0]},
-            new ProductCategory() {Product= Products[1], Category=Categories[1]},
-            new ProductCategory() {Product= Products[2], Category=Categories[0]},
-            new ProductCategory() {Product= Products[2], Category=Categories[2]},
-            new ProductCategory() {Product= Products[3], Category=Categories[1]},
+            new ProductCategory() { Product= Products[0],Category= Categories[0]},
+            new ProductCategory() { Product= Products[0],Category= Categories[2]},
+            new ProductCategory() { Product= Products[1],Category= Categories[0]},
+            new ProductCategory() { Product= Products[1],Category= Categories[1]},
+            new ProductCategory() { Product= Products[2],Category= Categories[0]},
+            new ProductCategory() { Product= Products[2],Category= Categories[2]},
+            new ProductCategory() { Product= Products[3],Category= Categories[1]}
         };
-
-
     }
 }

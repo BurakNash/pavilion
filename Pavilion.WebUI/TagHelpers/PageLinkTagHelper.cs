@@ -14,11 +14,11 @@ namespace Pavilion.WebUI.TagHelpers
 {
     [HtmlTargetElement("div", Attributes = "page-model")]
     public class PageLinkTagHelper : TagHelper
-    {
+    {     
         public PagingInfo PageModel { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
-        {
+        {         
             output.TagName = "div";
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append("<ul class='pagination'>");

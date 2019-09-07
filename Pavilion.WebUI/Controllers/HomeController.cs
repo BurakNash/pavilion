@@ -17,8 +17,7 @@ namespace Pavilion.WebUI.Controllers
         }
         public IActionResult Index()
         {
-            return View(new ProductListModel()
-            {
+            return View(new ProductListModel() {
                 Products = _productService.GetAll()
             });
         }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Pavilion.Entities
 {
-    public class Order
+   public class Order
     {
     }
 }
