@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Pavilion.Business.Abstract;
 using Pavilion.Entities;
@@ -9,6 +12,7 @@ using Pavilion.WebUI.Models;
 
 namespace Pavilion.WebUI.Controllers
 {
+    [Authorize(Roles ="admin")]
     public class AdminController : Controller
     {
         private IProductService _productService;
@@ -29,23 +33,33 @@ namespace Pavilion.WebUI.Controllers
         [HttpGet]
         public IActionResult CreateProduct()
         {
-            return View();
+            return View(new ProductModel());
         }
 
         [HttpPost]
         public IActionResult CreateProduct(ProductModel model)
         {
-            var entity = new Product()
+            if (ModelState.IsValid)
             {
-                Name = model.Name,
-                Price = model.Price,
-                Description = model.Description,
-                ImageUrl = model.ImageUrl
-            };
+                var entity = new Product()
+                {
+                    Name = model.Name,
+                    Price = model.Price,
+                    Description = model.Description,
+                    ImageUrl = model.ImageUrl
+                };
 
-            _productService.Create(entity);
+                if (_productService.Create(entity))
+                {
+                    return RedirectToAction("ProductList");
+                }
+                ViewBag.ErrorMessage = _productService.ErrorMessage;
+                return View(model);
 
-            return RedirectToAction("ProductList");
+            }
+
+            return View(model);
+
         }
 
         public IActionResult EditProduct(int? id)
@@ -54,7 +68,7 @@ namespace Pavilion.WebUI.Controllers
             {
                 return NotFound();
             }
-            var entity = _productService.GetById((int)id);
+            var entity = _productService.GetByIdWithCategories((int)id);
 
             if (entity == null)
             {
@@ -67,29 +81,50 @@ namespace Pavilion.WebUI.Controllers
                 Name = entity.Name,
                 Price = entity.Price,
                 Description = entity.Description,
-                ImageUrl = entity.ImageUrl
+                ImageUrl = entity.ImageUrl,
+                SelectedCategories = entity.ProductCategories.Select(i => i.Category).ToList()
             };
+
+            ViewBag.Categories = _categoryService.GetAll();
 
             return View(model);
         }
         [HttpPost]
-        public IActionResult EditProduct(ProductModel model)
+        public async Task<IActionResult> EditProduct(ProductModel model, int[] categoryIds, IFormFile file)
         {
-            var entity = _productService.GetById(model.Id);
-
-            if (entity == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
+                var entity = _productService.GetById(model.Id);
+
+                if (entity == null)
+                {
+                    return NotFound();
+                }
+
+                entity.Name = model.Name;
+                entity.Description = model.Description;               
+                entity.Price = model.Price;
+
+                if (file!=null)
+                {
+                    entity.ImageUrl = file.FileName;
+
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", file.FileName);
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                }
+
+                _productService.Update(entity, categoryIds);
+
+                return RedirectToAction("ProductList");
             }
 
-            entity.Name = model.Name;
-            entity.Description = model.Description;
-            entity.ImageUrl = model.ImageUrl;
-            entity.Price = model.Price;
+            ViewBag.Categories = _categoryService.GetAll();
 
-            _productService.Update(entity);
+            return View(model);
 
-            return RedirectToAction("ProductList");
         }
 
         [HttpPost]
@@ -167,5 +202,14 @@ namespace Pavilion.WebUI.Controllers
 
             return RedirectToAction("CategoryList");
         }
+
+        [HttpPost]
+        public IActionResult DeleteFromCategory(int categoryId, int productId)
+        {
+            _categoryService.DeleteFromCategory(categoryId, productId);
+            return Redirect("/admin/editcategory/" + categoryId);
+        }
+
+     
     }
 }
