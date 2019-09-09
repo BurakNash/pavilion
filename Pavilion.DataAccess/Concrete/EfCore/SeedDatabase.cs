@@ -31,9 +31,9 @@ namespace Pavilion.DataAccess.Concrete.EfCore
         }
 
         private static Category[] Categories = {
-            new Category() { Name="Telefon"},
-            new Category() { Name="Bilgisayar"},
-            new Category() { Name="Elektronik"}
+            new Category() { Name="Phone"},
+            new Category() { Name="Computer"},
+            new Category() { Name="Electronics"}
         };
 
         private static Product[] Products =

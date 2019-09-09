@@ -22,7 +22,7 @@ namespace Pavilion.WebUI.EmailServices
 
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("info@Pavilion.com", "Shop App"),
+                From = new EmailAddress("info@Pavilion.com", "Pavilion"),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message
