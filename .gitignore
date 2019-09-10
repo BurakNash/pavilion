@@ -4,6 +4,15 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 Pavilion.sln
 
+.DS_Store
+temp.go
+*.swp
+.env
+coverage.txt
+sendgrid.env
+.vscode
+
+
 # User-specific files
 *.rsuser
 *.suo
