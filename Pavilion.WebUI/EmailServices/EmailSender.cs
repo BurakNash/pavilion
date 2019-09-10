@@ -10,7 +10,7 @@ namespace Pavilion.WebUI.EmailServices
 {
     public class EmailSender : IEmailSender
     {
-        private const string SendGridKey = "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";
+        private const string SendGridKey = "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";
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             return Execute(SendGridKey, subject, htmlMessage, email);
