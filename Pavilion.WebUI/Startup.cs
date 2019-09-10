@@ -79,8 +79,13 @@ namespace Pavilion.WebUI
 
             services.AddScoped<IProductDal, EfCoreProductDal>();
             services.AddScoped<ICategoryDal, EfCoreCategoryDal>();
+            services.AddScoped<ICartDal, EfCoreCartDal>();
+            services.AddScoped<IOrderDal, EfCoreOrderDal>();
+
             services.AddScoped<IProductService, ProductManager>();
             services.AddScoped<ICategoryService, CategoryManager>();
+            services.AddScoped<ICartService, CartManager>();
+            services.AddScoped<IOrderService, OrderManager>();
 
             services.AddTransient<IEmailSender, EmailSender>();
 
@@ -111,6 +116,24 @@ namespace Pavilion.WebUI
                     template: "admin/products/{id?}",
                     defaults: new { controller = "Admin", action = "EditProduct" }
                 );
+
+                routes.MapRoute(
+                    name: "cart",
+                    template: "cart",
+                    defaults: new { controller = "Cart", action = "Index" }
+                );
+
+                routes.MapRoute(
+                    name: "orders",
+                    template: "orders",
+                    defaults: new { controller = "Cart", action = "GetOrders" }
+                );
+
+                routes.MapRoute(
+                   name: "checkout",
+                   template: "checkout",
+                   defaults: new { controller = "Cart", action = "Checkout" } 
+               );
 
                 routes.MapRoute(
                   name: "products",

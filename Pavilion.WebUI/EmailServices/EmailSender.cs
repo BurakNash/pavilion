@@ -10,7 +10,7 @@ namespace Pavilion.WebUI.EmailServices
 {
     public class EmailSender : IEmailSender
     {
-        private const string SendGridKey = "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";
+        private const string SendGridKey = "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";
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             return Execute(SendGridKey, subject, htmlMessage, email);
@@ -22,7 +22,7 @@ namespace Pavilion.WebUI.EmailServices
 
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("info@Pavilion.com", "Pavilion"),
+                From = new EmailAddress("info@pavilion.com", "Pavilion Jewelry Store"),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message
