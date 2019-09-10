@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Pavilion.DataAccess.Abstract
+namespace Pavilion.Business.Abstract
 {
-    public interface IOrderDal : IRepository<Order>
+    public interface IOrderService
     {
+        void Create(Order entity);
         List<Order> GetOrders(string userId);
     }
 }

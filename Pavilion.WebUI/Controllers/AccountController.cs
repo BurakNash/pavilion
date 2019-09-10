@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Pavilion.Business.Abstract;
 using Pavilion.WebUI.Extensions;
 using Pavilion.WebUI.Identity;
 using Pavilion.WebUI.Models;
@@ -17,9 +18,11 @@ namespace Pavilion.WebUI.Controllers
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
         private IEmailSender _emailSender;
+        private ICartService _cartService;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender emailSender)
+        public AccountController(ICartService cartService,UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender emailSender)
         {
+            _cartService = cartService;
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
@@ -57,7 +60,7 @@ namespace Pavilion.WebUI.Controllers
                 });
 
                 // send email
-                await _emailSender.SendEmailAsync(model.Email, "Hesabınızı Onaylayınız.", $"Lütfen email hesabınızı onaylamak için linke <a href='http://localhost:49884{callbackUrl}'>tıklayınız.</a>");
+                await _emailSender.SendEmailAsync(model.Email, "Hesabınızı Onaylayınız.", $"Lütfen email hesabınızı onaylamak için linke <a href='http://localhost:54067{callbackUrl}'>tıklayınız.</a>");
 
                 TempData.Put("message", new ResultMessage()
                 {
@@ -150,6 +153,9 @@ namespace Pavilion.WebUI.Controllers
                 var result = await _userManager.ConfirmEmailAsync(user, token);
                 if (result.Succeeded)
                 {
+                    // create cart object
+                    _cartService.InitializeCart(user.Id);
+
                     TempData.Put("message", new ResultMessage()
                     {
                         Title = "Hesap Onayı",
@@ -212,7 +218,7 @@ namespace Pavilion.WebUI.Controllers
             });
 
             // send email
-            await _emailSender.SendEmailAsync(Email, "Reset Password", $"Parolanızı yenilemek için linke <a href='http://localhost:49884{callbackUrl}'>tıklayınız.</a>");
+            await _emailSender.SendEmailAsync(Email, "Reset Password", $"Parolanızı yenilemek için linke <a href='http://localhost:54067{callbackUrl}'>tıklayınız.</a>");
 
             TempData.Put("message", new ResultMessage()
             {
