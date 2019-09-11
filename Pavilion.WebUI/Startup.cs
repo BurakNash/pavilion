@@ -42,13 +42,13 @@ namespace Pavilion.WebUI
             services.Configure<IdentityOptions>(options =>
             {
                 // password
-
+                /*
                 options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = true;
                 options.Password.RequiredLength = 6;
                 options.Password.RequireNonAlphanumeric = true;
                 options.Password.RequireUppercase = true;
-
+                */
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
                 options.Lockout.AllowedForNewUsers = true;
