@@ -165,7 +165,7 @@ namespace Pavilion.WebUI.Controllers
             request.ConversationId = Guid.NewGuid().ToString();
             request.Price = model.CartModel.TotalPrice().ToString().Split(",")[0]; ;
             request.PaidPrice = model.CartModel.TotalPrice().ToString().Split(",")[0]; ;
-            request.Currency = Currency.USD.ToString();
+            request.Currency = Currency.TRY.ToString();
             request.Installment = 1;
             request.BasketId = model.CartModel.CartId.ToString();
             request.PaymentChannel = PaymentChannel.WEB.ToString();
@@ -180,11 +180,13 @@ namespace Pavilion.WebUI.Controllers
             paymentCard.RegisterCard = 0;
             request.PaymentCard = paymentCard;
 
+            
             paymentCard.CardHolderName = "John Doe";
             paymentCard.CardNumber = "5528790000000008";
             paymentCard.ExpireMonth = "12";
             paymentCard.ExpireYear = "2030";
             paymentCard.Cvc = "123";
+            
 
             Buyer buyer = new Buyer();
             buyer.Id = "BY789";
@@ -226,7 +228,7 @@ namespace Pavilion.WebUI.Controllers
                 basketItem = new BasketItem();
                 basketItem.Id = item.ProductId.ToString();
                 basketItem.Name = item.Name;
-                basketItem.Category1 = "Phone";
+                basketItem.Category1 = "Ring";
                 basketItem.ItemType = BasketItemType.PHYSICAL.ToString();
                 basketItem.Price = item.Price.ToString().Split(",")[0];
 
