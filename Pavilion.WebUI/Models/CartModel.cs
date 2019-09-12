@@ -14,6 +14,11 @@ namespace Pavilion.WebUI.Models
         {
             return CartItems.Sum(i => i.Price * i.Quantity);
         }
+        public decimal TotalPriceShipping()
+        {
+            return CartItems.Sum(i => i.Price * i.Quantity)+10;
+        }
+
     }
 
     public class CartItemModel
