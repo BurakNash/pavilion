@@ -92,17 +92,37 @@
             {
                 <li class="list-group-item d-flex justify-content-between">
                     <div>
-                        <h6 class="my-0">@item.Name
+                        <h6 class="my-0">
+                            @item.Name
                             <small>x @item.Quantity</small>
                         </h6>
                     </div>
-                    <span class="text-muted">@item.Price USD</span>
+                    <span class="text-muted">@((item.Quantity * item.Price).ToString("c")) USD</span>
                 </li>
             }
-            <li class="list-group-item d-flex justify-content-between">
-                <span>Total (TL)</span>
-                <strong>@Model.CartModel.TotalPrice() USD</strong>
-            </li>
+
+            @if (Model.CartModel.TotalPrice() > 49)
+            {
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Shipping</span>
+                    <strong>FREE</strong>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total (USD)</span>
+                    <strong>@Model.CartModel.TotalPrice() USD</strong>
+                </li>
+            }
+            else
+            {
+        <li class="list-group-item d-flex justify-content-between">
+            <span>Shipping</span>10.00 USD
+        </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total (USD)</span>
+                    <strong>@Model.CartModel.TotalPriceShipping() USD</strong>
+                </li>
+            }
+
         </ul>
 
     </div>
