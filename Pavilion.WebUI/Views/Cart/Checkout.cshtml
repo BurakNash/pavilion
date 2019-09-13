@@ -1,11 +1,21 @@
-﻿@model  OrderModel
+﻿@model OrderModel
 @{
     ViewData["Title"] = "Checkout";
+}
+
+
+@section Scripts {
+    <script src="~/modules/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 }
 
 <h1>Checkout</h1>
 <hr />
 <div class="row">
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="text-danger">@ViewBag.ErrorMessage</div>
+    }
     <div class="col-md-8">
         <h4 class="mb-3">Order Details</h4>
         <form action="/checkout" method="post">
@@ -13,28 +23,34 @@
                 <div class="col-md-6 mb-3">
                     <label asp-for="@Model.FirstName"></label>
                     <input asp-for="@Model.FirstName" value="" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label asp-for="@Model.LastName"></label>
                     <input asp-for="@Model.LastName" value="" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
             </div>
             <div class="mb-3">
                 <label asp-for="@Model.Address"></label>
                 <textarea asp-for="@Model.Address" class="form-control"></textarea>
+                <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="row">
                 <div class="col-md-4 mb-3">
                     <label asp-for="@Model.City"></label>
                     <input asp-for="@Model.City" value="" class="form-control" />
+                    <span asp-validation-for="City" class="text-danger"></span>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label asp-for="@Model.Phone"></label>
                     <input asp-for="@Model.Phone" value="" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label asp-for="@Model.Email"></label>
                     <input asp-for="@Model.Email" value="" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
             </div>
             <hr class="mb-4" />
@@ -114,9 +130,9 @@
             }
             else
             {
-        <li class="list-group-item d-flex justify-content-between">
-            <span>Shipping</span>10.00 USD
-        </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Shipping</span>10.00 USD
+                </li>
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Total (USD)</span>
                     <strong>@Model.CartModel.TotalPriceShipping() USD</strong>

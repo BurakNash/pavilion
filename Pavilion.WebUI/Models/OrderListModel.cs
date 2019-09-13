@@ -28,6 +28,10 @@ namespace Pavilion.WebUI.Models
         {
             return OrderItems.Sum(i => i.Price * i.Quantity);
         }
+        public decimal TotalPriceShipping()
+        {
+            return OrderItems.Sum(i => i.Price * i.Quantity) + 10;
+        }
     }
 
     public class OrderItemModel

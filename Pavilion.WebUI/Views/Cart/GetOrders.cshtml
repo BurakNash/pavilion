@@ -14,6 +14,8 @@
                 <td colspan="2">Order Id: @order.OrderId</td>
                 <td>Price</td>
                 <td>Quantity</td>
+                <td>Shipping</td>
+                <td><strong>Total</strong></td>
             </tr>
         </thead>
         <tbody>
@@ -32,7 +34,30 @@
                 <td>
                     @orderItem.Quantity
                 </td>
+                @if (order.TotalPrice() > 49)
+                {
+                    <td>
+                        @order.TotalPrice();
+                    </td>
+}
+                else
+                {
+                    <td>
+                        10.00
+                    </td>
+                }
+                @if (order.TotalPrice() > 49)
+                {
 
+                    <td> @order.TotalPrice()</td>
+                }
+                else
+                {
+
+                    <td> @order.TotalPriceShipping()</td>
+                }
+
+                
             </tr>
             }
         </tbody>
@@ -40,7 +65,8 @@
             <tr>
                 <td colspan="2">Customer Name:</td>
                 <td>@User.Identity.Name</td>
-                <td>Total: @order.TotalPrice()</td>
+                
+
             </tr>
             <tr>
                 <td colspan="2">Adres:</td>
