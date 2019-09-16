@@ -125,8 +125,8 @@ namespace Pavilion.WebUI.Controllers
 
             TempData.Put("message", new ResultMessage()
             {
-                Title = "Oturum Kapatıldı.",
-                Message = "Hesabınız güvenli bir şekilde sonlandırıldı.",
+                Title = "LogOut.",
+                Message = "You have succesfully logged out",
                 Css = "warning"
             });
 
@@ -139,8 +139,8 @@ namespace Pavilion.WebUI.Controllers
             {
                 TempData.Put("message", new ResultMessage()
                 {
-                    Title = "Hesap Onayı",
-                    Message = "Hesap onayı için bilgileriniz yanlış",
+                    Title = "Account Confirmation",
+                    Message = "Your information is incorrect.",
                     Css = "danger"
                 });
 
@@ -158,8 +158,8 @@ namespace Pavilion.WebUI.Controllers
 
                     TempData.Put("message", new ResultMessage()
                     {
-                        Title = "Hesap Onayı",
-                        Message = "Hesabınız başarıyla onaylanmıştır.",
+                        Title = "Account Confirmation",
+                        Message = "Your account is confirmed.",
                         Css = "success"
                     });
 
@@ -169,8 +169,8 @@ namespace Pavilion.WebUI.Controllers
 
             TempData.Put("message", new ResultMessage()
             {
-                Title = "Hesap Onayı",
-                Message = "Hesabınız onaylanamadı.",
+                Title = "Account Confirmation",
+                Message = "Your account is not confirmed.",
                 Css = "danger"
             });
             return View();
@@ -189,7 +189,7 @@ namespace Pavilion.WebUI.Controllers
                 TempData.Put("message", new ResultMessage()
                 {
                     Title = "Forgot Password",
-                    Message = "Bilgileriniz Hatalı",
+                    Message = "Wrong Information",
                     Css = "danger"
                 });
 
@@ -203,7 +203,7 @@ namespace Pavilion.WebUI.Controllers
                 TempData.Put("message", new ResultMessage()
                 {
                     Title = "Forgot Password",
-                    Message = "Eposta adresi ile bir kullanıcı bulunamadı",
+                    Message = "No e-mail found",
                     Css = "danger"
                 });
 
@@ -223,7 +223,7 @@ namespace Pavilion.WebUI.Controllers
             TempData.Put("message", new ResultMessage()
             {
                 Title = "Forgot Password",
-                Message = "Parola yenilemek için hesabınıza mail gönderildi.",
+                Message = "E-mail sent to confirm your account",
                 Css = "warning"
             });
 
