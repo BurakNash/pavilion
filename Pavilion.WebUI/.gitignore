@@ -10,6 +10,7 @@ temp.go
 .env
 coverage.txt
 sendgrid.env
+EmailSender
 .vscode
 
 
