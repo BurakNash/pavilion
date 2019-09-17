@@ -15,6 +15,7 @@ namespace Pavilion.WebUI.Controllers
         {
             _productService = productService;
         }
+
         public IActionResult Index()
         {
             return View(new ProductListModel() {
