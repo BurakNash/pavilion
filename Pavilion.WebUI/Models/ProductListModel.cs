@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Pavilion.WebUI.Models
 {
+
+
     public class PagingInfo
     {
         public int TotalItems { get; set; }
@@ -22,5 +24,7 @@ namespace Pavilion.WebUI.Models
     {
         public PagingInfo PagingInfo { get; set; }
         public List<Product> Products{ get; set; }
+        public int CartId { get; set; }
+        public List<CartItemModel> CartItems { get; set; }
     }
 }
