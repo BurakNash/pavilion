@@ -6,91 +6,96 @@
 <h1>Orders</h1>
 <hr />
 
+
 @foreach (var order in Model)
 {
-    <table class="table table-bordered table-sm mb-3">
-        <thead>
-            <tr>
-                <td colspan="2">Order Id: @order.OrderId</td>
-                <td>Price</td>
-                <td>Quantity</td>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var orderItem in order.OrderItems)
-            {
+    <div class="border border-primary">
+        <table class="table table-bordered table-sm mb-3">
+            <thead>
                 <tr>
-                    <td>
-                        <img src="~/img/@orderItem.ImageUrl" alt="Alternete Text" width="50" />
-                    </td>
-                    <td>
-                        @orderItem.Name
-                    </td>
-                    <td>
-                        @orderItem.Price
-                    </td>
-                    <td>
-                        @orderItem.Quantity
-                    </td>
+                    <td colspan="2">Order Number: @order.OrderId</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
                 </tr>
-            }
+            </thead>
+            <tbody>
+                @foreach (var orderItem in order.OrderItems)
+                {
+                    <tr>
+                        <td>
+                            <img src="~/img/@orderItem.ImageUrl" alt="Alternete Text" width="50" />
+                        </td>
+                        <td>
+                            @orderItem.Name
+                        </td>
+                        <td>
+                            @orderItem.Price
+                        </td>
+                        <td>
+                            @orderItem.Quantity
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    @if (order.TotalPrice() < 49)
+                    {
+                        <td colspan="2">
+                            <strong>Shipping: 10.00</strong>
+                        </td>
+                    }
+                    else
+                    {
+                        <td colspan="2">
+                            <strong>Shipping: FREE</strong>
+                        </td>
+                    }
+                    @if (order.TotalPrice() > 49)
+                    {
+                        <td colspan="2" class="border border-danger">
+                            <strong>TOTAL: @order.TotalPrice()</strong>
+                        </td>
+                    }
+                    else
+                    {
+                        <td colspan="2" class="border border-danger">
+                            <strong>TOTAL: @order.TotalPriceShipping()</strong>
+                        </td>
+                    }
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered table-sm mb-3">
             <tr>
-                @if (order.TotalPrice() < 49)
-                {
-                    <td colspan="2">
-                        <strong>Shipping: 10.00</strong>
-                    </td>
-                }
-                else
-                {
-                    <td colspan="2">
-                        <strong>Shipping: FREE</strong>
-                    </td>
-                }
-                @if (order.TotalPrice() > 49)
-                {
-                    <td colspan="2" class="border border-danger">
-                        <strong>TOTAL: @order.TotalPrice()</strong>
-                    </td>
-                }
-                else
-                {
-                    <td colspan="2" class="border border-danger">
-                        <strong>TOTAL: @order.TotalPriceShipping()</strong>
-                    </td>
-                }
+                <td colspan="2">Customer Name:</td>
+                <td>@User.Identity.Name</td>
             </tr>
-        </tbody>
-    </table>
-    <table class="table table-bordered table-sm mb-3">
-        <tr>
-            <td colspan="2">Customer Name:</td>
-            <td>@User.Identity.Name</td>
-        </tr>
-        <tr>
-            <td colspan="2">Adres:</td>
-            <td>@order.Address</td>
-        </tr>
-        <tr>
-            <td colspan="2">Phone:</td>
-            <td>@order.Phone</td>
-        </tr>
-        <tr>
-            <td colspan="2">Email:</td>
-            <td>@order.Email</td>
-        </tr>
-        <tr>
-            <td colspan="2">Payment Status:</td>
-            <td>@order.PaymentTypes</td>
-        </tr>
-        <tr>
-            <td colspan="2">Order Status:</td>
-            <td>@order.OrderState</td>
-        </tr>
-    </table>
+            <tr>
+                <td colspan="2">Adres:</td>
+                <td>@order.Address</td>
+            </tr>
+            <tr>
+                <td colspan="2">Phone:</td>
+                <td>@order.Phone</td>
+            </tr>
+            <tr>
+                <td colspan="2">Email:</td>
+                <td>@order.Email</td>
+            </tr>
+            <tr>
+                <td colspan="2">Payment Status:</td>
+                <td>@order.PaymentTypes</td>
+            </tr>
+            <tr>
+                <td colspan="2">Order Status:</td>
+                <td>@order.OrderState</td>
+            </tr>
+        </table>
 
 
 
-
+    </div>
+    <br />
 }
+
 
