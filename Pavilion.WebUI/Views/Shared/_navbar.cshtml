@@ -1,4 +1,5 @@
-﻿<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+﻿
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container">
         <a class="navbar-brand" href="/">Pavilion</a>
         <ul class="navbar-nav mr-auto">
@@ -29,9 +30,13 @@
                 }
                 else
                 {
-                    <li class="nav-item">
-                        <a asp-controller="Cart" asp-action="Index" class="nav-link">Cart</a>
-                    </li>
+                    @if
+                     (Model.CartItems != null)
+                    {
+                        <li class="nav-item">
+                            <a asp-controller="Cart" asp-action="Index" class="nav-link">Cart</a>
+                        </li>
+                    }
                     <li class="nav-item">
                         <a asp-controller="Cart" asp-action="GetOrders" class="nav-link">Orders</a>
                     </li>
