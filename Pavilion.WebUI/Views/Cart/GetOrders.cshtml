@@ -50,13 +50,13 @@
                 @if (order.TotalPrice() > 49)
                 {
                     <td colspan="2" class="border border-danger">
-                        <strong>Total: @order.TotalPrice()</strong>
+                        <strong>TOTAL: @order.TotalPrice()</strong>
                     </td>
                 }
                 else
                 {
-                    <td colspan="2">
-                        <strong>Total: @order.TotalPriceShipping()</strong>
+                    <td colspan="2" class="border border-danger">
+                        <strong>TOTAL: @order.TotalPriceShipping()</strong>
                     </td>
                 }
             </tr>
