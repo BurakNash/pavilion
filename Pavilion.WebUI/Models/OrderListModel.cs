@@ -21,6 +21,7 @@ namespace Pavilion.WebUI.Models
         public string Phone { get; set; }
         public string Email { get; set; }
         public string OrderNote { get; set; }
+        
 
         public List<OrderItemModel> OrderItems { get; set; }
 
