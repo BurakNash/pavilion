@@ -218,7 +218,7 @@ namespace Pavilion.WebUI.Controllers
             });
 
             // send email
-            await _emailSender.SendEmailAsync(Email, "Reset Password", $"Parolanızı yenilemek için linke <a href='http://localhost:54067{callbackUrl}'>tıklayınız.</a>");
+            await _emailSender.SendEmailAsync(Email, "Reset Password", $"Click this link <a href='http://localhost:54067{callbackUrl}'>to reset your password.</a>");
 
             TempData.Put("message", new ResultMessage()
             {
