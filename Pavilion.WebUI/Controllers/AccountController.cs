@@ -60,12 +60,12 @@ namespace Pavilion.WebUI.Controllers
                 });
 
                 // send email
-                await _emailSender.SendEmailAsync(model.Email, "Hesabınızı Onaylayınız.", $"Lütfen email hesabınızı onaylamak için linke <a href='http://localhost:54067{callbackUrl}'>tıklayınız.</a>");
+                await _emailSender.SendEmailAsync(model.Email, "Confirm Your Account", $"Click this link <a href='http://localhost:54067{callbackUrl}'>to confirm your account.</a>");
 
                 TempData.Put("message", new ResultMessage()
                 {
-                    Title ="Hesap Onayı",
-                    Message="Eposta adrenize gelen link ile hesabınızı onaylayınız",
+                    Title ="Confirmation",
+                    Message="Confirm your account with the link sent to your e-mail",
                     Css="warning"
                 });
 
@@ -73,7 +73,7 @@ namespace Pavilion.WebUI.Controllers
             }
 
 
-            ModelState.AddModelError("", "Bilinmeyen hata oluştu lütfen tekrar deneyiniz.");
+            ModelState.AddModelError("", "Unknown Error, Please Try Again");
             return View(model);
         }
 
@@ -97,13 +97,13 @@ namespace Pavilion.WebUI.Controllers
 
             if (user == null)
             {
-                ModelState.AddModelError("", "Bu email ile daha önce hesap oluşturulmamış.");
+                ModelState.AddModelError("", "No account linked to this e-mail");
                 return View(model);
             }
 
             if (!await _userManager.IsEmailConfirmedAsync(user))
             {
-                ModelState.AddModelError("", "Lütfen hesabınızı email ile onaylayınız.");
+                ModelState.AddModelError("", "Please confirm your account");
                 return View(model);
             }
 
@@ -115,7 +115,7 @@ namespace Pavilion.WebUI.Controllers
                 return Redirect(model.ReturnUrl ?? "~/");
             }
 
-            ModelState.AddModelError("", "Email veya parola yanlış");
+            ModelState.AddModelError("", "Email or Password is incorrect");
             return View(model);
         }
 
@@ -218,7 +218,7 @@ namespace Pavilion.WebUI.Controllers
             });
 
             // send email
-            await _emailSender.SendEmailAsync(Email, "Reset Password", $"Parolanızı yenilemek için linke <a href='http://localhost:54067{callbackUrl}'>tıklayınız.</a>");
+            await _emailSender.SendEmailAsync(Email, "Reset Password", $"Click this link <a href='http://localhost:54067{callbackUrl}'>to reset your password.</a>");
 
             TempData.Put("message", new ResultMessage()
             {
