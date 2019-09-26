@@ -1,6 +1,10 @@
 # PROJECT-Pavilion
 Project: Pavilion - Jewlery Store: C#, Asp.NET Core, Mvc, Sql, Json, Bootstrap, EfCore, Identity Core, Lyzico payment, 
 
+<div>
+<img src="admin.png" alt="Logo">
+</div>
+
 Description:
 
 Pavilion is an online jewelry store where shoppers can buy various jewelry products. Administrators of the
