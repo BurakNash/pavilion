@@ -27,4 +27,8 @@ create accounts by verifying their e-mails and add payment methods to complete t
 <li>Partial views (to clean up iews and enable re-use)
 </ul>
 
+<div>
+<img src="checkout.png" alt="Logo">
+</div>
+
 
