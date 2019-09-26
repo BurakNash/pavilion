@@ -5,7 +5,7 @@ Project: Pavilion - Jewlery Store: C#, Asp.NET Core, Mvc, Sql, Json, Bootstrap, 
 <img src="admin.png" alt="Logo">
 </div>
 
-Description:
+<h3>Description:</h3>
 
 Pavilion is an online jewelry store where shoppers can buy various jewelry products. Administrators of the
 application can add new products and new categories and view the orders of the customers. Shoppers can
