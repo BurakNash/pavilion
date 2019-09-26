@@ -1,8 +1,9 @@
 # PROJECT-Pavilion
 Project: Pavilion - Jewlery Store: C#, Asp.NET Core, Mvc, Sql, Json, Bootstrap, EfCore, Identity Core, Lyzico payment, 
+<h3>Diagram</h3>
 
 <div>
-<img src="admin.png" alt="Logo">
+<img src="diagram.png" alt="Logo">
 </div>
 
 <h3>Description:</h3>
@@ -27,13 +28,20 @@ create accounts by verifying their e-mails and add payment methods to complete t
 <li>Partial views (to clean up iews and enable re-use)
 </ul>
 
+<h4>Admin Panel</h4>
+<div>
+<img src="admin.png" alt="Logo">
+</div>
+
+<h4>Shoppers Cart</h4>
 <div>
 <img src="cart.png" alt="Logo">
 </div>
 
-<h3>Diagram</h3>
-
+<h4>Shoppers Orders</h4>
 <div>
-<img src="diagram.png" alt="Logo">
+<img src="orders.png" alt="Logo">
 </div>
+
+
 
