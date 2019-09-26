@@ -1,5 +1,5 @@
-# PROJECT-Pavilion
-Project: Pavilion - Jewlery Store: C#, Asp.NET Core, Mvc, Sql, Json, Bootstrap, EfCore, Identity Core, Lyzico payment, 
+# Pavilion Jewelry Store
+
 <h3>Diagram</h3>
 
 <div>
@@ -26,6 +26,8 @@ create accounts by verifying their e-mails and add payment methods to complete t
 <li>Tag Helper (to clean up the HTML and enable reuse)
 <li>HTML Helper methods (to clean up HTML and enable reuse)
 <li>Partial views (to clean up iews and enable re-use)
+<li>Iyizco Payment (To receive payments from the customers)
+<li>SendGrid (To confirm accounts and forgot password confirmation)
 </ul>
 
 <h4>Admin Panel</h4>
