@@ -31,4 +31,9 @@ create accounts by verifying their e-mails and add payment methods to complete t
 <img src="cart.png" alt="Logo">
 </div>
 
+<h3>Diagram</h3>
+
+<div>
+<img src="diagram.png" alt="Logo">
+</div>
 
